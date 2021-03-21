@@ -10,6 +10,6 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor(staticName = "of")
 public class BookResponseDto {
-    private final String title;
+    private final Integer id;
     private final String message;
 }
