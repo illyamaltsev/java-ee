@@ -24,8 +24,8 @@ public class RestController {
     ) {
         System.out.println("Get books ");
 
-        return search.map(bookRepository::findBySearchKeyword)
-                .orElseGet(bookRepository::allBooks);
+        return search.map(bookRepository::findByKeyword)
+                .orElseGet(bookRepository::findAll);
     }
 
     @ResponseBody
@@ -35,15 +35,15 @@ public class RestController {
     ) {
         System.out.println("Add book");
 
-        BookEntity addedBook = bookRepository.addBook(newBook);
+        BookEntity addedBook = bookRepository.saveAndFlush(newBook);
         return ResponseEntity.ok(BookResponseDto.of(addedBook.getId(), "Created"));
     }
 
     @ResponseBody
     @RequestMapping(value = "/books/{id}", method = RequestMethod.GET)
-    public BookEntity bookList(@PathVariable("id") final Integer id) {
+    public Optional<BookEntity> bookList(@PathVariable("id") final Integer id) {
         System.out.println("Get book");
 
-        return bookRepository.getBookById(id);
+        return bookRepository.findById(id);
     }
 }
