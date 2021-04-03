@@ -1,4 +1,4 @@
-package com.website.demo.dto;
+package com.website.demo.controller.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor(staticName = "of")
-public class BookResponseDto {
-    private final Integer id;
-    private final String message;
+public class UserDto {
+    private String login;
+    private String password;
 }

@@ -1,5 +1,6 @@
 package com.website.demo.repository;
 
+import com.website.demo.domain.entities.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

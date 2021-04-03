@@ -1,4 +1,4 @@
-package com.website.demo.repository;
+package com.website.demo.domain.entities;
 
 import lombok.*;
 

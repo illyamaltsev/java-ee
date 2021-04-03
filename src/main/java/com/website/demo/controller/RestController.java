@@ -1,7 +1,7 @@
 package com.website.demo.controller;
 
-import com.website.demo.dto.BookResponseDto;
-import com.website.demo.repository.BookEntity;
+import com.website.demo.controller.dto.BookResponseDto;
+import com.website.demo.domain.entities.BookEntity;
 import com.website.demo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
