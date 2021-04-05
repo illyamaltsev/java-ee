@@ -1,5 +1,6 @@
 package com.website.demo.controller;
 
+import com.website.demo.controller.dto.BookDto;
 import com.website.demo.controller.dto.BookResponseDto;
 import com.website.demo.domain.entities.BookEntity;
 import com.website.demo.repository.BookRepository;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,11 +33,17 @@ public class RestController {
     @ResponseBody
     @RequestMapping(value = "/books", method = RequestMethod.POST)
     public ResponseEntity<BookResponseDto> addNewBook(
-            @RequestBody final BookEntity newBook
+            @RequestBody @Valid final BookDto book
     ) {
         System.out.println("Add book");
 
-        BookEntity addedBook = bookRepository.saveAndFlush(newBook);
+        BookEntity new_book = BookEntity.builder()
+                .title(book.getTitle())
+                .author(book.getAuthor())
+                .isbn(book.getIsbn())
+                .build();
+
+        BookEntity addedBook = bookRepository.saveAndFlush(new_book);
         return ResponseEntity.ok(BookResponseDto.of(addedBook.getId(), "Created"));
     }
 
